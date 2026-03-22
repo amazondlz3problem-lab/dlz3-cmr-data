@@ -470,3 +470,7 @@
     "ASSLO": "SS LOGISTICS",
     "SNNPL": "sennder Deutschland GmbH",
 }
+ window.CARRIER_DB    = CARRIER_DB;
+window.parseScac     = parseScac;
+window.findCarrier   = findCarrier;
+window.searchCarrier = searchCarrier;

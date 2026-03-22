@@ -432,9 +432,9 @@ function searchCarrier(query) {
         .map(function(entry) {
             return { code: entry[0], name: entry[1] };
         });
-    window.CARRIER_DB    = CARRIER_DB;
+   
+}
+ window.CARRIER_DB    = CARRIER_DB;
 window.parseScac     = parseScac;
 window.findCarrier   = findCarrier;
 window.searchCarrier = searchCarrier;
-
-}

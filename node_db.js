@@ -712,3 +712,5 @@ function getNode(code) {
 if (typeof module !== 'undefined') {
     module.exports = { NODE_DB, getNodesByType, getNodesByRegion, getNode };
 }
+// Esponi sul window per cmr_generator.js
+window.NODE_DB = NODE_DB;

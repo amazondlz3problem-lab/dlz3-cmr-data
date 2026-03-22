@@ -1,18 +1,3 @@
-
-
-
-    'use strict';
-
-    // ═══════════════════════════════════════════════════
-    // ⚙️ CONFIGURAZIONE GITHUB
-    // Istruzioni:
-    // 1. Crea un repository su GitHub (es. "dlz3-cmr-data")
-    // 2. Carica il file carriers.json nel repo
-    // 3. Crea un Gist per lo storico CMR
-    // 4. Genera un Personal Access Token con permessi:
-    //    - repo (per leggere carriers.json)
-    //    - gist (per leggere/scrivere storico)
-    // ═══════════════════════════════════════════════════
     const CONFIG = {
         // ── Carrier DB (file JSON nel tuo repo GitHub) ──
         CARRIERS_URL: 'https://raw.githubusercontent.com/TUO_USERNAME/dlz3-cmr-data/main/carriers.json',

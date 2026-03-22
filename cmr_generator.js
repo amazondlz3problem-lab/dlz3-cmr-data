@@ -1,7 +1,24 @@
 // cmr_generator.js — Amazon DLZ3 v1.7
-// Caricato dal loader Tampermonkey
+// Le funzioni GM_ vengono prese da window (iniettate dal loader)
 
-(function(GM_setValue, GM_getValue, GM_xmlhttpRequest) {
+var GM_setValue       = window.GM_setValue;
+var GM_getValue       = window.GM_getValue;
+var GM_xmlhttpRequest = window.GM_xmlhttpRequest;
+
+// Verifica che siano disponibili
+if (typeof GM_setValue !== 'function') {
+    console.error('[CMR] GM_setValue non disponibile su window!');
+}
+if (typeof GM_getValue !== 'function') {
+    console.error('[CMR] GM_getValue non disponibile su window!');
+}
+
+// ═══════════════════════════════════════════════════
+// STORAGE
+// ═══════════════════════════════════════════════════
+function savePlates(vrid, trailer, tractor) { ... }
+// ... resto del codice INVARIATO
+
 
     'use strict';
 

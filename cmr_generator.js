@@ -1,4 +1,13 @@
-    const CONFIG = {
+// cmr_generator.js — Amazon DLZ3 v1.7
+// GM_ functions sono esposte su window dal loader
+
+var GM_setValue       = window.GM_setValue;
+var GM_getValue       = window.GM_getValue;
+var GM_xmlhttpRequest = window.GM_xmlhttpRequest;
+
+// ... tutto il resto del codice invariato
+
+const CONFIG = {
         // cmr_generator.js — Amazon DLZ3 v1.7
 // Le funzioni GM_ vengono iniettate dal loader
 

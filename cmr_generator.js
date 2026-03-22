@@ -4,6 +4,9 @@
 var GM_setValue       = window.GM_setValue;
 var GM_getValue       = window.GM_getValue;
 var GM_xmlhttpRequest = window.GM_xmlhttpRequest;
+// Recupera i DB dal window (caricati prima)
+var CARRIER_DB = window.CARRIER_DB;
+var NODE_DB    = window.NODE_DB;
 
 // ... tutto il resto del codice invariato
 

@@ -1,18 +1,4 @@
-// ==UserScript==
-// @name         Amazon CMR Generator — DLZ3 v1.8
-// @namespace    http://tampermonkey.net/
-// @version      1.8
-// @description  CMR Generator + Storico condiviso GitHub + Carrier DB remoto
-// @author       Sasha Angelini - DLZ3
-// @match        https://track.relay.amazon.dev/*
-// @match        https://trans-logistics-eu.amazon.com/yms/shipclerk/*
-// @grant        GM_setValue
-// @grant        GM_getValue
-// @grant        GM_xmlhttpRequest
-// @connect      raw.githubusercontent.com
-// @connect      api.github.com
-// @run-at       document-idle
-// ==/UserScript==
+
 
 (function () {
     'use strict';
@@ -1961,4 +1947,4 @@ ${pages}
         }, 2000);
     }
 
-})();
+

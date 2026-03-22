@@ -1,4 +1,17 @@
     const CONFIG = {
+        // cmr_generator.js — Amazon DLZ3 v1.7
+// Le funzioni GM_ vengono iniettate dal loader
+
+// Fallback: se GM_ non arrivano come parametri
+// usa quelle globali esposte dal loader
+if (typeof GM_setValue === 'undefined') {
+    var GM_setValue       = window._GM_setValue;
+    var GM_getValue       = window._GM_getValue;
+    var GM_xmlhttpRequest = window._GM_xmlhttpRequest;
+}
+
+// ... resto del codice cmr_generator.js
+
         // ── Carrier DB (file JSON nel tuo repo GitHub) ──
         CARRIERS_URL: 'https://raw.githubusercontent.com/TUO_USERNAME/dlz3-cmr-data/main/carriers.json',
 

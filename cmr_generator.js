@@ -283,50 +283,89 @@
         }
 
         function addButtons() {
-            document.querySelectorAll('[mdn-expander-title]').forEach(function(row) {
-                if (row.querySelector('.cmr-btn')) return;
-                var vEl = row.querySelector('p.css-17xh5uu');
-                if (!vEl) return;
-                var vrid     = vEl.textContent.trim();
-                var nodes    = row.querySelectorAll('p.css-1mefxab');
-                var nodeTo   = nodes[1] ? nodes[1].textContent.trim() : '';
-                var cEl      = row.querySelector('p.css-pmdsih');
-                var contType = cEl ? (cEl.title || cEl.textContent.trim()) : '';
-                var scacRaw  = getScacRaw(row);
+    document.querySelectorAll('[mdn-expander-title]').forEach(function(row) {
+        if (row.querySelector('.cmr-btn')) return;
+        var vEl = row.querySelector('p.css-17xh5uu');
+        if (!vEl) return;
 
-                var btn = document.createElement('button');
-                btn.className = 'cmr-btn';
-                btn.innerHTML = '🖨️ CMR';
-                btn.title = 'CMR — ' + vrid;
-                btn.style.cssText =
-                    'background:linear-gradient(135deg,#FF9900,#e68a00);' +
-                    'color:#000;border:none;border-radius:4px;' +
-                    'padding:3px 10px;font-size:11px;font-weight:bold;' +
-                    'cursor:pointer;margin-left:8px;vertical-align:middle;' +
-                    'box-shadow:0 1px 4px rgba(0,0,0,0.3);';
+        var vrid     = vEl.textContent.trim();
+        var nodes    = row.querySelectorAll('p.css-1mefxab');
+        var nodeTo   = nodes[1] ? nodes[1].textContent.trim() : '';
+        var cEl      = row.querySelector('p.css-pmdsih');
+        var contType = cEl ? (cEl.title || cEl.textContent.trim()) : '';
+        var scacRaw  = getScacRaw(row);
 
-                btn.addEventListener('click', function(e) {
-                    e.stopPropagation(); e.preventDefault();
-                    selectedGoods = [];
-                    var cont    = getParentContainer(row);
-                    var drivers = getDrivers(cont);
-                    var plates  = getPlates(vrid);
-                    openPopup({
-                        vrid:    vrid,
-                        nodeTo:  nodeTo,
-                        contType:contType,
-                        scacRaw: scacRaw,
-                        carrier: findCarrier(scacRaw),
-                        drivers: drivers,
-                        trailer: plates.trailer,
-                        tractor: plates.tractor,
-                    });
+        var btn = document.createElement('button');
+        btn.className = 'cmr-btn';
+        btn.innerHTML = '🖨️ CMR';
+        btn.title = 'CMR — ' + vrid;
+
+        // ── STILE ──
+        btn.setAttribute('style',
+            'background:linear-gradient(135deg,#FF9900,#e68a00) !important;' +
+            'color:#000 !important;' +
+            'border:none !important;' +
+            'border-radius:4px !important;' +
+            'padding:4px 12px !important;' +
+            'font-size:11px !important;' +
+            'font-weight:bold !important;' +
+            'cursor:pointer !important;' +
+            'margin-left:8px !important;' +
+            'vertical-align:middle !important;' +
+            'z-index:9999 !important;' +
+            'position:relative !important;' +
+            'pointer-events:all !important;'
+        );
+
+        // ── CLICK con tutti i metodi possibili ──
+        btn.onclick = function(e) {
+            e.stopPropagation();
+            e.stopImmediatePropagation();
+            e.preventDefault();
+
+            console.log('[CMR] Click su VRID:', vrid);
+
+            try {
+                selectedGoods = [];
+                var cont    = getParentContainer(row);
+                var drivers = getDrivers(cont);
+                var plates  = getPlates(vrid);
+
+                console.log('[CMR] drivers:', drivers);
+                console.log('[CMR] plates:', plates);
+                console.log('[CMR] nodeTo:', nodeTo);
+                console.log('[CMR] scacRaw:', scacRaw);
+
+                openPopup({
+                    vrid:     vrid,
+                    nodeTo:   nodeTo,
+                    contType: contType,
+                    scacRaw:  scacRaw,
+                    carrier:  findCarrier(scacRaw),
+                    drivers:  drivers,
+                    trailer:  plates.trailer,
+                    tractor:  plates.tractor,
                 });
 
-                var vridContainer = row.querySelector('.css-184bhl9');
-                if (vridContainer) vridContainer.appendChild(btn);
-            });
+                console.log('[CMR] openPopup chiamato');
+            } catch(err) {
+                console.error('[CMR] ERRORE nel click:', err);
+                alert('Errore CMR: ' + err.message);
+            }
+
+            return false;
+        };
+
+        var vridContainer = row.querySelector('.css-184bhl9');
+        if (vridContainer) {
+            vridContainer.appendChild(btn);
+            console.log('[CMR] Pulsante aggiunto per VRID:', vrid);
+        } else {
+            console.warn('[CMR] .css-184bhl9 non trovato per VRID:', vrid);
         }
+    });
+}
+
 
         function openPopup(d) {
             var existing = document.getElementById('cmr-ov');

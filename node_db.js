@@ -711,5 +711,7 @@ function getNode(code) {
 // Export per uso in Node.js / module
 if (typeof module !== 'undefined') {
     module.exports = { NODE_DB, getNodesByType, getNodesByRegion, getNode };
+    window.NODE_DB = NODE_DB;
+
 }
 
